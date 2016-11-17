@@ -25,6 +25,43 @@ app.get('/webhook/', function (req, res) {
     //res.send(req.query['hub.challenge'])
 })
 
+
+app.post('/webhook/', function (req, res) {
+    messaging_events = req.body.entry[0].messaging
+    for (i = 0; i < messaging_events.length; i++) {
+        event = req.body.entry[0].messaging[i]
+        sender = event.sender.id
+        if (event.message && event.message.text) {
+            text = event.message.text
+            sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
+        }
+    }
+    res.sendStatus(200)
+})
+
+var token = "https://graph.facebook.com/v2.6/me/subscribed_apps?access_token=EAAIvacFZAdHcBAH6Kjs93WZCIqYKcY3VCO1Mlo7ZAw3bph0KRLUfLvlwjqNa37zyKlvNmo41JUglfJJlA2ZBRHMAtFu0FulGYQoNv1OflfYLZACJ9umeRkBU8mlDRvNpJ9CD3jCTOQ39urAyGrZCE0d2PlruNojV4w43y5CLbeZCAZDZD"
+
+function sendTextMessage(sender, text) {
+    messageData = {
+        text:text
+    }
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token:token},
+        method: 'POST',
+        json: {
+            recipient: {id:sender},
+            message: messageData,
+        }
+    }, function(error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+    })
+}
+
 // Spin up the server
 app.listen(app.get('port'), function() {
     console.log('running on port', app.get('port'))
