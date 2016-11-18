@@ -39,7 +39,7 @@ app.post('/webhook/', function (req, res) {
     res.sendStatus(200)
 })
 */
-var token = "https://graph.facebook.com/v2.6/me/subscribed_apps?access_token=EAAIvacFZAdHcBAH6Kjs93WZCIqYKcY3VCO1Mlo7ZAw3bph0KRLUfLvlwjqNa37zyKlvNmo41JUglfJJlA2ZBRHMAtFu0FulGYQoNv1OflfYLZACJ9umeRkBU8mlDRvNpJ9CD3jCTOQ39urAyGrZCE0d2PlruNojV4w43y5CLbeZCAZDZD"
+var token = "EAAIvacFZAdHcBAH6Kjs93WZCIqYKcY3VCO1Mlo7ZAw3bph0KRLUfLvlwjqNa37zyKlvNmo41JUglfJJlA2ZBRHMAtFu0FulGYQoNv1OflfYLZACJ9umeRkBU8mlDRvNpJ9CD3jCTOQ39urAyGrZCE0d2PlruNojV4w43y5CLbeZCAZDZD"
 
 function sendTextMessage(sender, text) {
     messageData = {
