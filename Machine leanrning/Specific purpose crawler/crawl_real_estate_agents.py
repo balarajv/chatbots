@@ -29,7 +29,7 @@ class gatherRealEstateAgents(object):
 		respose = openUrl(url)
 		if respose != True:
 			try:
-				
+
 			for no in xrange(2,250):
 				url = url +  str(no) + "_p"
 
