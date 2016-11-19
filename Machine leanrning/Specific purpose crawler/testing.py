@@ -1,6 +1,10 @@
 from bs4 import BeautifulSoup
 import urllib2
 from HelperrClasses import *
+import sys
+reload(sys)
+import re
+sys.setdefaultencoding('utf-8')
 
 def openUrl(url):
 		try: 
@@ -28,26 +32,29 @@ soup = BeautifulSoup(response, "html.parser")
 members = soup.find("ul", {"class", "listBorderedHover mvn"})
 members_list = members.findAll("li")
 
-
+index = 1
 for member in members_list:	
-	print member
+	
 	url = member.find("a", {"class", "mediaImg frameThumb"})['href']
 	name = member.find("h5", {"class","typeEmphasize ellipsis_overflow mvn agent_name_link pan man"}).find("a").string
-	details = member.find("p", {"class", "mvn h7"}).string
-	phone_no = member.find("p", {"class", "mvn h7"}).string
+	details = member.findAll("p", {"class": re.compile('mvn h7.*')})
+
+	if len(details) == 1:
+		phone_no = details[0].string
+		detail = None
+	if len(details) == 2:
+		detail = details[0].string
+		phone_no = details[1].string
+
 	rating  = member.find("div", {"class", "narrowIcon"})['title']
 	no_rating = member.find("span", {"class", "reviewCount"}).string
 	location = member.find("div", {"class", "h7 typeLowlight mvn ptm"}).string
 	houses_sold = member.find("div", {"class", "typeDeemphasize mvs"}).string
 	active_listings = member.find("div", {"class", "typeDeemphasize mvn"}).string
+	active_listings = "0"
 	
-	#def __init__(self, name, phone_no, location, houses_sold, ratings,  active_listings, url):
-	x = AgentDetails(name, details, phone_no, location, houses_sold, rating+"/"+no_rating, active_listings, url)
-	print x
-
-	#print member
-	#url = member.find("a", {"class", "mediaImg frameThumb"})[0]['href']
-
-	#print member.first("img")["alt"]
-
+	x = AgentDetails(name, detail, phone_no, location, houses_sold, 
+		rating+"/"+no_rating, active_listings, url, index)
+	index = index + 1
+	
 
