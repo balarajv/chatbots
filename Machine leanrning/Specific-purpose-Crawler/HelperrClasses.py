@@ -1,11 +1,19 @@
 class AgentDetails(object):
+<<<<<<< HEAD
 	def __init__(self, name, phone_no, location, houses_sold, ratings,  active_listings):
+=======
+	def __init__(self, name, phone_no, location, houses_sold, ratings,  active_listings, url):
+>>>>>>> chatbots/master
 		self.name = name
 		self.phone_no = phone_no
 		self.location = location
 		self.houses_sold = houses_sold
 		self.ratings = ratings
 		self.active_listings = active_listings
+<<<<<<< HEAD
+=======
+		self.url = url
+>>>>>>> chatbots/master
 
 class OpenHouseDetails(object):
 	pass
