@@ -1,6 +1,7 @@
 class AgentDetails(object):
 
-	def __init__(self, name, phone_no, location, houses_sold, ratings,  active_listings, url):
+	def __init__(self, name, details, phone_no, location, houses_sold, ratings,  active_listings, url):
+		
 		self.name = name
 		self.details = details
 		self.phone_no = phone_no

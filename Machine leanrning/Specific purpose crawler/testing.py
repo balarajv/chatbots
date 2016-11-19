@@ -30,18 +30,19 @@ members_list = members.findAll("li")
 
 
 for member in members_list:	
-
-	url = member.find("a", {"class", "mediaImg frameThumb"})[1]['href']
-	name = member.find("a", {"class", "mediaImg frameThumb"})[1].string
-	details = member.find("p", {"class", "mvn h7"})[0].string
-	phone_number = member.find("p", {"class", "mvn h7"})[0].string
-	rating  = member.find("div", {"class", "narrowIcon"})[0]['title']
-	no_rating = member.find("span", {"class", "reviewCount"})[0].string
-	location = member.find("div", "h7 typeLowlight mvn ptm")[0].string
-	active_listings = member.find("div", "typeDeemphasize mvn")[0].string
-
+	print member
+	url = member.find("a", {"class", "mediaImg frameThumb"})['href']
+	name = member.find("h5", {"class","typeEmphasize ellipsis_overflow mvn agent_name_link pan man"}).find("a").string
+	details = member.find("p", {"class", "mvn h7"}).string
+	phone_no = member.find("p", {"class", "mvn h7"}).string
+	rating  = member.find("div", {"class", "narrowIcon"})['title']
+	no_rating = member.find("span", {"class", "reviewCount"}).string
+	location = member.find("div", {"class", "h7 typeLowlight mvn ptm"}).string
+	houses_sold = member.find("div", {"class", "typeDeemphasize mvs"}).string
+	active_listings = member.find("div", {"class", "typeDeemphasize mvn"}).string
+	
 	#def __init__(self, name, phone_no, location, houses_sold, ratings,  active_listings, url):
-	x = AgentDetails(name, phone_no, location, houses_sold, rating+"/"+no_rating, active_listings, url)
+	x = AgentDetails(name, details, phone_no, location, houses_sold, rating+"/"+no_rating, active_listings, url)
 	print x
 
 	#print member
