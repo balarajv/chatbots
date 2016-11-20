@@ -33,6 +33,7 @@ members = soup.find("ul", {"class", "listBorderedHover mvn"})
 members_list = members.findAll("li")
 
 index = 1
+agents = []
 for member in members_list:	
 	
 	url = member.find("a", {"class", "mediaImg frameThumb"})['href']
@@ -55,6 +56,7 @@ for member in members_list:
 	
 	x = AgentDetails(name, detail, phone_no, location, houses_sold, 
 		rating+"/"+no_rating, active_listings, url, index)
-	index = index + 1
+	agents.append(x)
+return agents
 	
 
