@@ -60,7 +60,7 @@ class archiveRealEstateAgents(object):
 			agents.append(x)
 		return agents
 
-	def getAgents(self):
+	def getRAgents(self):
 		url = "https://www.trulia.com/directory/Boston-agent--6578/"
 		all_members = []
 		members = self.scrapeAgentsFromUrl(url)
@@ -74,10 +74,9 @@ class archiveRealEstateAgents(object):
 			all_members = all_members + members
 		return all_members
 
-
 if __name__ == '__main__':
 	members = archiveRealEstateAgents()
-	agents  = members.getAgents()
+	agents  = members.getRAgents()
 	with open("agents.pickle", "wb") as output_file:
 		pickle.dump(agents, output_file)
 
