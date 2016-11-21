@@ -1,8 +1,8 @@
 class AgentDetails(object):
 
-	def __init__(self, name = None, details = None, phone_no = None, location= None,
-	 houses_sold= None, ratings= None,  active_listings= None, 
-	 url= None, index = None):
+	def __init__(self, name = None, details = None, phone_no = None,]
+	 location= None, houses_sold= None, ratings= None, 
+	 active_listings= None, url= None, index = None):
 		self.name = name
 		self.details = details
 		self.phone_no = phone_no		
@@ -41,7 +41,35 @@ class AgentDetails(object):
 		" url "+self.url)
 
 class OpenHouseDetails(object):
-	pass
+	def __init__(self ):
+		pass
 
-class mortgageAgentDetails(object):
-	pass
+class MAgentDetails(object):
+	def __init__(self, agent_name = None, company_name = None, 
+		agent_url = None, compnay_url = None, 
+		agent_rating = None, agent_review_count = None, 
+		agent_image = None):
+		self.agent_name = agent_name
+		self.compnay_url = compnay_url
+		self.company_name = company_name
+		self.agent_url = agent_url
+		self.agent_image = agent_image
+		self.agent_rating = agent_rating
+		self.agent_review_count = agent_review_count
+
+		if self.agent_name == None:
+			self.agent_name = ""
+		if self.company_name == None:
+			self.company_name = ""
+		if self.compnay_url == None:
+			self.compnay_url = ""
+		if self.agent_rating == None:
+			self.agent_rating = ""
+		if self.agent_review_count == None:
+			self.agent_review_count = ""
+		if self.agent_url == None:
+			self.agent_url = ""
+		if self.agent_image ==  None:
+			self.agent_image = ""
+
+
