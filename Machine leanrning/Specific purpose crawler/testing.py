@@ -62,7 +62,7 @@ def scrapeAgents(self, response):
 		
 def scrapeMAgents(self, response):
 	soup = BeautifulSoup(response, "html.parser")
-
+	magents = []
 	agents = soup.find_all("div", {"class", "ld-lender-card ld-lender-card_bank"})
 	for agent in agents:
 		agent_image_helper = agent.find("zsg-lg-1-4 ld-lender-image-column").first("a").first("div")["style"]
@@ -76,9 +76,12 @@ def scrapeMAgents(self, response):
 		agent_reviews = agent.find("div", {"class", "zsg-md-hide zsg-sm-hide ld-lender-review-column"})
 		agent_rating = int(agent_reviews.find("h2").find("span")["class"][-3:])/100
 		agent_review_count = agent_reviews.string
-		
-		
 
+		mAgentDetails = MAgentDetails(agent_name, agent_company, agent_url, 
+			company_url, agent_rating, agent_review_count, agent_image)
+		print mAgentDetails
+		magents.append(agent)
+	return magents
 
 
 

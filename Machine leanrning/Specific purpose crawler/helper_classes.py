@@ -72,4 +72,13 @@ class MAgentDetails(object):
 		if self.agent_image ==  None:
 			self.agent_image = ""
 
+	def __str__(self):
+		return ("agent name :"+self.agent_name+
+			"\nagent url :"+self.agent_url+
+			"\ncompany name :"+self.company_name+
+			"\ncompany url :"+self.compnay_url+
+			"\nagent image :"+self.agent_image+
+			"\nagent rating :"+self.agent_rating+
+			"\nagent review count :"+self.agent_review_count)
+
 
